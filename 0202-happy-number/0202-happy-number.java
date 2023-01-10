@@ -10,22 +10,43 @@ class Solution {
         return sum;
     }
     
-    
-    public boolean isHappy(int n) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
+    //METHOD-1
+    //Time : O(N)
+    //Space : O(N)
+//     public boolean isHappy(int n) {
+//         HashMap<Integer,Integer> hm = new HashMap<>();
         
-        while(true){
-            int sum = squares(n);
+//         while(true){
+//             int sum = squares(n);
             
-            if(sum == 1)
-                return true;
-            if(hm.containsKey(sum))
-                return false;
+//             if(sum == 1)
+//                 return true;
+//             if(hm.containsKey(sum))
+//                 return false;
             
-            hm.put(sum,1);
-            n = sum;
+//             hm.put(sum,1);
+//             n = sum;
             
-        }
-        //return false;
+//         }
+//         //return false;
+//     }
+    
+    
+    //METHOD-2
+    //TIME : O(N)
+    //SPACE : O(1)
+    
+    public boolean isHappy(int n){
+        int slow = n,fast = n;
+        
+        do{
+            slow = squares(slow);
+            fast = squares(squares(fast));
+            //System.out.println(slow+" "+fast);
+        }while(slow != fast);
+        
+        return fast == 1;
+        
     }
+    
 }
