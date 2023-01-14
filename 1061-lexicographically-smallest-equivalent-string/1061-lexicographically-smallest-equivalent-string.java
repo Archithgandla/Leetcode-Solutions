@@ -1,5 +1,6 @@
 class Solution {
 
+    //performance can be improved using Union and find
     char DFS(ArrayList<ArrayList<Integer>> adj,boolean[] visited,int v,char c){
         
         visited[v] = true;
