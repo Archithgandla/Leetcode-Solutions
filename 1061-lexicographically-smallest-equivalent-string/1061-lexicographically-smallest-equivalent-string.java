@@ -1,42 +1,43 @@
 class Solution {
-    public String smallestEquivalentString(String A, String B, String S) {
-        Map<Character, Character> letterGroupMap = new HashMap<Character, Character>();
-        Map<Character, Set<Character>> groupLettersMap = new HashMap<Character, Set<Character>>();
-        for (char c = 'a'; c <= 'z'; c++) {
-            letterGroupMap.put(c, c);
-            Set<Character> set = new HashSet<Character>();
-            set.add(c);
-            groupLettersMap.put(c, set);
+
+    char DFS(ArrayList<ArrayList<Integer>> adj,boolean[] visited,int v,char c){
+        
+        visited[v] = true;
+
+        if((char)(v+'a')<c){
+            //System.out.println((char)(v+'a'));
+            c = (char)(v+'a');
         }
-        int length = A.length();
-        for (int i = 0; i < length; i++) {
-            char c1 = A.charAt(i), c2 = B.charAt(i);
-            char group1 = letterGroupMap.get(c1), group2 = letterGroupMap.get(c2);
-            if (group1 != group2) {
-                Set<Character> set1 = groupLettersMap.get(group1);
-                Set<Character> set2 = groupLettersMap.get(group2);
-                if (group1 < group2) {
-                    for (char c : set2)
-                        letterGroupMap.put(c, group1);
-                    set1.addAll(set2);
-                    groupLettersMap.put(group1, set1);
-                    groupLettersMap.remove(group2);
-                } else {
-                    for (char c : set1)
-                        letterGroupMap.put(c, group2);
-                    set2.addAll(set1);
-                    groupLettersMap.put(group2, set2);
-                    groupLettersMap.remove(group1);
-                }
+        for(int i:adj.get(v)){
+            if(!visited[i]){
+                //System.out.println((char)(i+'a')<'p');
+                c = DFS(adj,visited,i,c);
             }
         }
-        char[] array = S.toCharArray();
-        int strLength = array.length;
-        for (int i = 0; i < strLength; i++) {
-            char c = array[i];
-            char group = letterGroupMap.get(c);
-            array[i] = group;
+        return c;
+    }
+
+
+    public String smallestEquivalentString(String s1, String s2, String baseStr) {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+
+        for(int i=0;i<26;i++)
+            adj.add(new ArrayList<>());
+        
+        //Creating a adjacency list
+        for(int i=0;i<s1.length();i++){
+            adj.get(s1.charAt(i)-'a').add(s2.charAt(i)-'a');
+            adj.get(s2.charAt(i)-'a').add(s1.charAt(i)-'a');
         }
-        return new String(array);
+
+        //System.out.println(adj);
+
+        StringBuilder ans = new StringBuilder("");
+
+        for(int i=0;i<baseStr.length();i++){
+            char c = DFS(adj,new boolean[26],baseStr.charAt(i)-'a',baseStr.charAt(i));
+            ans.append(c);
+        }
+        return ans.toString();
     }
 }
