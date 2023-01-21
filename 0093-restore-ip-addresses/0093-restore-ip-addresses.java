@@ -28,8 +28,8 @@ class Solution {
 
 
     public List<String> restoreIpAddresses(String s) {
-
-        
+        if(s.length()<4 || s.length()>12)
+            return new ArrayList<String>();
 
         List<String> Al = new ArrayList<String>();
         Util(s,0,"",0,Al);
