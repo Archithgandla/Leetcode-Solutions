@@ -3,7 +3,6 @@ class Solution {
         //Celebrity Problem
         //Usage of stack
         
-        HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
         int[][] arr = new int[n+1][n+1];        
         
         for(int[] temp:trust)
