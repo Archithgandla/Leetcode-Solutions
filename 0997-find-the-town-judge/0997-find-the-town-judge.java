@@ -18,10 +18,12 @@ class Solution {
             int a = st.pop();
             int b = st.pop();
             
+            //a is judge
             if(arr[a][b] != 1 && arr[b][a] == 1){
                 st.push(a);
                 //System.out.println(b);
             }
+            //b is judge
             if(arr[b][a] != 1 && arr[a][b] == 1){
                 //System.out.println(a);
                 st.push(b);
