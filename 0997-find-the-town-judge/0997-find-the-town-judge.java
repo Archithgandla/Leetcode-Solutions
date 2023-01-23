@@ -2,6 +2,7 @@ class Solution {
     public int findJudge(int n, int[][] trust) {
         //Celebrity Problem
         //Usage of stack
+        //Better approaches : https://www.youtube.com/watch?v=NlTjorKsn-Y
         
         int[][] arr = new int[n+1][n+1];        
         
