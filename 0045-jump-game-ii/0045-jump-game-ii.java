@@ -1,3 +1,6 @@
+//app-1 DP o(n^2)
+//app-2 Greedy o(1)
+
 class Solution {
     public int jump(int[] nums) {
         int steps = 0;
