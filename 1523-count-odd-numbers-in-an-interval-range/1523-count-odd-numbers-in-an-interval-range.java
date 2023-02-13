@@ -10,11 +10,8 @@ class Solution {
         // return count;
         
         //App-2
-        if(low%2 == 0 && high%2 == 0){
+        if(low%2 == 0 && high%2 == 0)
             return ((high-low)/2);
-        }
-        else if(low%2 != 0 && high%2 != 0)
-            return ((high-low)/2)+1;
         else
             return ((high-low)/2)+1;
     }
