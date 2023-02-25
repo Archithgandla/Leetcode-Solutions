@@ -1,10 +1,19 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int profit = 0,min = Integer.MAX_VALUE;
+        //Brute force
+        //For index i calculate the profit a[j]-a[i] where j>=i and j<n
+        //Claculate the maximum among all
         
-        for(int i=0;i<prices.length;i++){
-            min = Math.min(min,prices[i]);
-            profit = Math.max(profit,prices[i]-min);
+        
+        //Approach-1
+        //Calculating the least on the go
+        
+        int min = Integer.MAX_VALUE;
+        int profit = 0;
+        
+        for(int i:prices){
+            min = Math.min(min,i);
+            profit = Math.max(profit,i-min);
         }
         return profit;
     }
