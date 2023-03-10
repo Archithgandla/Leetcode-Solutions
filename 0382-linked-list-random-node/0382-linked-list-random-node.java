@@ -18,7 +18,8 @@ class Solution {
     //https://www.youtube.com/watch?v=9vC4I5sKFsw
     //Time : 1 and space : O(1)
     //I didn't understand this approach
-    
+    //https://www.youtube.com/watch?v=9vC4I5sKFsw
+    //Refer above youtube video for MII explanation
     
     Random random; 
     ArrayList<Integer> Al;
