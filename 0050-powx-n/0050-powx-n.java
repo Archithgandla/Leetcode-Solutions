@@ -1,5 +1,6 @@
 class Solution {
-    
+    //Plain recursion giving TLE
+    //So applied dynamic programming using a HashMap,tada
     public double Util(double x, int n,HashMap<Integer,Double> hm){
         if(n == 1)
             return x;
