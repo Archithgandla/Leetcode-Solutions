@@ -1,7 +1,7 @@
 class Solution {
     public int bulbSwitch(int n) {
         //Approach-1
-        
+        //Refer codeStorywithMik
         int i = 1;
         for(i=1;i*i<=n;i++);
         
