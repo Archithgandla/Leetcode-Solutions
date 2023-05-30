@@ -1,23 +1,21 @@
 class MyHashSet {
     
-    HashMap<Integer,Boolean> hm;
+    int[] arr;
     public MyHashSet() {
-        hm = new HashMap<>();
+        arr = new int[(int)1e6+1];
+        Arrays.fill(arr,-1);
     }
     
     public void add(int key) {
-        if(!hm.containsKey(key))
-            hm.put(key,true);
+        arr[key] = 1;
     }
     
     public void remove(int key) {
-        if(!hm.containsKey(key))
-            return;
-        hm.remove(key);
+        arr[key] = -1;
     }
     
     public boolean contains(int key) {
-        return hm.containsKey(key);
+        return arr[key] == -1?false:true;
     }
 }
 
