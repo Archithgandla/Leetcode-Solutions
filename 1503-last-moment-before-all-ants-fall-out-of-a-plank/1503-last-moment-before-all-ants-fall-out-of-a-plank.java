@@ -1,0 +1,25 @@
+class Solution {
+    public int getLastMoment(int n, int[] left, int[] right) {
+
+        int minm = Integer.MAX_VALUE;
+        int maxm = Integer.MIN_VALUE;
+
+        for(int i:right)
+            minm = Math.min(minm,i);
+        
+        for(int i:left)
+            maxm = Math.max(maxm,i);
+
+        return Math.max(n-minm,maxm);
+
+    }
+}
+
+
+
+
+
+
+
+
+
