@@ -1,3 +1,7 @@
+//Approach-1 : Below approach
+//Approach-2 : Using min heap
+
+
 class SeatManager {
 
     int[] arr;
