@@ -18,7 +18,7 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             // System.out.println(sum-pre[i]-nums[i]);
             // System.out.println((nums.length-i-1)*nums[i]);
-            ans[i] = Math.abs(i*nums[i]-pre[i])+Math.abs(sum-pre[i]-nums[i]-((nums.length-i-1)*nums[i]));
+            ans[i] = (i*nums[i]-pre[i])+(sum-pre[i]-nums[i]-((nums.length-i-1)*nums[i]));
             //System.out.println(" ");
         }
         return ans;
