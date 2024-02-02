@@ -27,7 +27,10 @@ class Solution {
         //and for each number check if it has sequential digits
         //Time complexity : O(N*(Number of digits in high))
         //This gives TLE
-
+    
+        
+        //Approach-2
+        
         int temp = low,digit_count = 0;
 
         while(temp/10>0){
