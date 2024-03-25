@@ -19,7 +19,7 @@ class Solution {
             if(Util(arr[index]+k,arr,visited))
                 return true;
 
-            visited[arr[index]+k] = false;
+            //visited[arr[index]+k] = false;
         }
 
         if(k-arr[index]>=0 && !visited[k-arr[index]]){
@@ -28,7 +28,7 @@ class Solution {
             if(Util(k-arr[index],arr,visited))
                 return true;
 
-            visited[k-arr[index]] = false;
+            //visited[k-arr[index]] = false;
         }
         return false;
     }
