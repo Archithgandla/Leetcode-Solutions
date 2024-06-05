@@ -20,8 +20,11 @@ class Solution {
                 continue;
             }
             
+            
+            //Only one odd count charcater can be taken
             if(!flag)
                 len+=1;
+            
             flag = true;
             len+=(hm.get(c)-1);
         }
