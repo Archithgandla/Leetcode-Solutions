@@ -7,22 +7,14 @@ class Solution {
 
         for(int i:nums){
 
-            if(!hm.containsKey(i)){
-                hm.put(i,1);
+            
+            if(i>prev){
                 prev = i;
                 continue;
             }
-
             
-            int ref = i;
-            i = prev;
-
-            while(hm.containsKey(i))
-                i+=1;
-
-            count+=(i-ref);
-            hm.put(i,1);
-            prev = i;
+            count+=((prev+1)-i);
+            prev+=1;
         }
 
         return count;
