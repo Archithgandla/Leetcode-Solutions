@@ -1,30 +1,33 @@
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
-        int count = 0,ans = 0,i=0,j=0;
+        
+        //Approach-1
+        //Consider all subarrays using a nested loop and count the number
+        //of subarrays with no of odd numbers equal to k
 
-        while(j<nums.length){
-            if(nums[j]%2 != 0)
-                count+=1;
-            
-            
+        //Approach-2
+        //Sliding window but might become complex
 
-            while(count == k){
-                ans+=1;
-                int temp = j+1;
-                while(count == k && temp<nums.length && nums[temp]%2 == 0){
-                    temp+=1;
-                    ans+=1;
-                    //System.out.println("hello");
-                }
+        //Approach-3
+        //hashmap
 
-                //System.out.println("ith : "+nums[i]);
-                if(nums[i]%2 != 0)
-                    count-=1;
-                //System.out.println("count : "+count);
-                i+=1;
-            }
-            j+=1;
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        hm.put(0,1);
+        int odd_count = 0,ans = 0;
+
+        for(int i:nums){
+            if(i%2 == 1)
+                odd_count+=1;
+
+            hm.put(odd_count,hm.getOrDefault(odd_count,0)+1);
+
+            ans+=(hm.getOrDefault(odd_count-k,0));
         }
+
         return ans;
     }
 }
+
+
+
+
