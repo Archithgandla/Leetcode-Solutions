@@ -10,97 +10,50 @@
  */
 class Solution {
 
-    ListNode split(ListNode head,int dist){
-        
-        
-        while(dist>1){
-            head = head.next;
-            dist-=1;
-        }
 
-        ListNode nextHead = head.next;
+    public ListNode Util(ListNode head,int perPart){
+
+        perPart-=1;
+
+        while(perPart>0){
+            head = head.next;
+            perPart-=1;
+        }
+        ListNode next = head.next;
         head.next = null;
 
-        return nextHead;
+        return next;
     }
-
 
 
     public ListNode[] splitListToParts(ListNode head, int k) {
 
-        int len = 0;
         ListNode temp = head;
+        int count = 0;
 
         while(temp != null){
-            len+=1;
+            count+=1;
             temp = temp.next;
         }
 
-        //case-1 : k == len then divide then nodes into k nodes
-        //case-2 : k>len then split the list into k nodes and remaining null
-        //case-3 : k<len then 
-        //         len%k == 0 then just split the list into len/k pieces
-        //         len%k != 0 then for 
-        //
-
+        int perPart = count/k,idx = 0;
+        int remain = count-((count/k)*k);
         ListNode[] ans = new ListNode[k];
-        temp = head;
 
-        if(k == len || k>len){
-            ListNode next = null;
-            int index = 0;
-
-            while(temp != null){
-                ans[index] = temp;
-                temp = split(temp,1);
-                index+=1;
-            }
-            return ans;
+        while(head != null){
+            ans[idx] = head;
+            head = Util(head,perPart+(remain>0?1:0));       
+            idx+=1;
+            remain-=1;
         }
 
-        if(len%k == 0){
-
-            int split_size = len/k,index = 0;            
-            int curr = k;
-
-            while(curr>0){
-                ans[index] = temp;
-                temp = split(temp,split_size);
-                index+=1;
-                curr-=1;
-            }
-
-            return ans;
-
-        }
-        else{
-
-            int split_size = len/k;
-            int extra = len%k,index = 0;
-
-            while(extra>0){
-                ans[index] = temp;
-                temp = split(temp,split_size+1);
-                index+=1;
-                extra-=1;
-            }
-
-            int remain = k-extra;
-
-            while(remain>0 && index<ans.length){
-                ans[index] = temp;
-                temp = split(temp,split_size);
-                index+=1;
-                remain-=1;           
-            }
-
-            return ans;
-        }
-
-        // return null;
-
+        return ans;
     }
 }
+
+
+
+
 
 
 
