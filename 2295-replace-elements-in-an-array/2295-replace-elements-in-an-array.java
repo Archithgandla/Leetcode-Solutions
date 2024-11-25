@@ -9,7 +9,7 @@ class Solution {
         for(int[] arr:operations){
             nums[hm.get(arr[0])] = arr[1];
             hm.put(arr[1],hm.get(arr[0]));
-            hm.remove(arr[0]);
+            //hm.remove(arr[0]);
         }
         return nums;
     }
